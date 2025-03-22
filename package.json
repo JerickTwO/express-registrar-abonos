@@ -1,0 +1,19 @@
+{
+  "name": "registrar-abonos",
+  "version": "1.0.0",
+  "description": "aplicacion para registrar abonos de venta",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "js"
+  ],
+  "author": "monkeywit",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
