@@ -13,13 +13,15 @@ const clienteSchema = new Schema(
         },
         edad: {
             type: Number,
+            min: [1, "Apenas puedes hablar, crece un poco anda"],
+            max: [100, "Un poco más y ya no"]
         },
         correo: {
-            type: String,  // 🔥 CORRECCIÓN AQUÍ
-            required: true  // 🔥 CORRECCIÓN AQUÍ
+            type: String,
+            required: true
         }
     },
-    { timestamps: true }
+    { timestamps: true, versionKey: false }
 );
 
-export default mongoose.model('abonos', clienteSchema); // 🔥 Opcional: Cambia 'abonos' por 'Cliente' si almacenas clientes.
+export default mongoose.model('clientes', clienteSchema);

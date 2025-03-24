@@ -10,7 +10,8 @@ class clienteController {
                 return res.status(400).json({ error: "Datos inválidos o vacíos" });
             }
 
-            res.status(201).json(cliente);
+            const nuevoCliente = await clientesModel.create(cliente);
+            res.status(201).json(nuevoCliente);
         } catch (error) {
             res.status(500).json({ error: "Error al insertar cliente", detalle: error.message });
         }

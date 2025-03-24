@@ -14,7 +14,7 @@ class clientesModel {
         return await Cliente.findById(id)
     }
     async delete(id) {
-        return await Cliente.deleteOne(id)
+        return await Cliente.deleteOne({ _id: id })
     }
 }
 

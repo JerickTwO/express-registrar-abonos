@@ -6,7 +6,7 @@ class dbClient {
         this.conectarDB();
     }
     async conectarDB() {
-        const queryString = `mongodb+srv://${process.env.USER_DB}:${process.env.PASSWORD_DB}@${process.env.SERVER_DB}/?retryWrites=true&w=majority`;
+        const queryString = `mongodb+srv://${process.env.USER_DB}:${process.env.PASSWORD_DB}@${process.env.SERVER_DB}/abonos?retryWrites=true&w=majority`;
         // this.client = new MongoClient(queryString);
         await mongoose.connect(queryString);
     }
@@ -20,6 +20,5 @@ class dbClient {
     }
 
 }
-
 
 export default new dbClient();
