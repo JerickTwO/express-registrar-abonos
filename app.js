@@ -1,7 +1,7 @@
 import express from 'express';
 import routesClientes from './routes/clientes.js'
 import 'dotenv/config';
-import bodyParser from 'body-parser';
+import dbClient from './config/dbClient.js';
 
 const app = express();
 app.use(express.json());
@@ -22,4 +22,8 @@ try {
 catch (e) {
     console.log(e)
 }
+process.on('SIGINT', async()=>{
+    dbClient.cerrarConexion();
+    process.exit(0)
+})
 

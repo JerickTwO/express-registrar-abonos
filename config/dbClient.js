@@ -1,25 +1,25 @@
-import { MongoClient } from "mongodb";
 import 'dotenv/config';
+import mongoose from "mongoose";
 
-class DBClient {
+class dbClient {
     constructor() {
-        const queryString = `mongodb+srv://${process.env.USER_DB}:${process.env.PASSWORD_DB}@${process.env.SERVER_DB}/?retryWrites=true&w=majority`;
-        this.client = new MongoClient(queryString);
-        this.db = null;
+        this.conectarDB();
     }
-
     async conectarDB() {
+        const queryString = `mongodb+srv://${process.env.USER_DB}:${process.env.PASSWORD_DB}@${process.env.SERVER_DB}/?retryWrites=true&w=majority`;
+        // this.client = new MongoClient(queryString);
+        await mongoose.connect(queryString);
+    }
+    async cerrarConexion() {
         try {
-            await this.client.connect();
-            this.db = this.client.db("clientes");
-            console.log("✅ Conectado a la DB");
+            await mongoose.disconnect();
+            console.log("✅ DB CONECTADA")
         } catch (e) {
-            console.error("❌ Error al conectar a la DB:", e);
+            console.error("❌ Erro al conectarse", e)
         }
     }
+
 }
 
-const dbClient = new DBClient();
-dbClient.conectarDB();
 
-export default dbClient;
+export default new dbClient();

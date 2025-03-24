@@ -1,27 +1,20 @@
-import dbClient from "../config/dbClient.js";
-import { ObjectId } from "mongodb";
+import Cliente from '../schemas/clientes.js'
 class clientesModel {
 
     async create(cliente) {
-        const colClientes = dbClient.db.collection('abonos');
-        return await colClientes.insertOne(cliente);
+        return await Cliente.create(cliente)
     }
     async update(id, cliente) {
-        const colClientes = dbClient.db.collection('abonos');
-        return await colClientes.updateOne({ _id: new ObjectId(id) }, { $set: cliente })
+        return await Cliente.findOneAndUpdate(id, cliente, { new: true });
     }
     async getAll() {
-        const colClientes = dbClient.db.collection('abonos');
-        return await colClientes.find({}).toArray();
+        return await Cliente.find();
     }
     async getOne(id) {
-
-        const colClientes = dbClient.db.collection('abonos');
-        return await colClientes.findOne({ _id: new ObjectId(id) });
+        return await Cliente.findById(id)
     }
     async delete(id) {
-        const colClientes = dbClient.db.collection('abonos')
-        return await colClientes.deleteOne({ _id: new ObjectId(id) })
+        return await Cliente.deleteOne(id)
     }
 }
 
