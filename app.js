@@ -1,5 +1,6 @@
 import express from 'express';
 import routesClientes from './routes/clientes.js'
+import routesProductos from './routes/productos.js'
 import 'dotenv/config';
 import dbClient from './config/dbClient.js';
 
@@ -8,6 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
     
 app.use("/clientes", routesClientes);
+app.use("/productos", routesProductos);
 
 
 try {
