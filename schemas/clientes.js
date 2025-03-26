@@ -4,22 +4,9 @@ const { Schema } = mongoose;
 
 const clienteSchema = new Schema(
     {
-        nombre: {
-            type: String,
-            required: true,
-        },
-        apellido: {
-            type: String,
-        },
-        edad: {
-            type: Number,
-            min: [1, "Apenas puedes hablar, crece un poco anda"],
-            max: [100, "Un poco más y ya no"]
-        },
-        correo: {
-            type: String,
-            required: true
-        }
+        nombre: { type: String, required: true },
+        correo: { type: String, unique: true },
+        deudaTotal: { type: Number, required: true, default: 0 },    
     },
     { timestamps: true, versionKey: false }
 );

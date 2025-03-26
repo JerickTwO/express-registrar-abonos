@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const abonosSchema = new Schema(
+const ventasSchema = new Schema(
     {
         nombre: {
             type: String,
@@ -17,4 +17,4 @@ const abonosSchema = new Schema(
     { timestamps: true, versionKey: false }
 );
 
-export default mongoose.model('abonos', abonosSchema);
+export default mongoose.model('ventas', ventasSchema);
